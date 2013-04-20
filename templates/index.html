@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block q %}
+{% endblock q %}
+{% block content %}
+<div class="hero-unit">
+    <h1>Search Beer Advocate</h1>
+    <form class="form-search" action="/search" method="get">
+        <input type="search" class="input-xxlarge search-query" name="q" placeholder="enter your search, friend">
+        <button type="submit" class="btn">Search</button>
+    </form>
+    {% if error %}
+    <p class="text-error text-center">Sorry, friend. That page does not exist. This one does, though.</p>
+    {% endif %}
+</div>
+{% endblock content %}

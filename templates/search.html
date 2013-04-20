@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block q %}
+{{ query }}
+{% endblock q %}
+{% block content %}
+<ul class="results unstyled">
+    {% if not results %}
+    <li class="text-info">Sorry, we did not find any results for that query</li>
+    {% endif %}
+    {% for item in results %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

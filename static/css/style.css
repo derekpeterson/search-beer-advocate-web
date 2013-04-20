@@ -1,0 +1,22 @@
+.container {
+    margin-top: 100px;
+}
+.navbar .home {
+    margin: 12px 0 0 30px;
+}
+.navbar .form-search {
+    margin: 10px 15%;
+}
+.navbar .form-search .btn {
+    margin: 0;
+}
+.hero-unit * {
+    text-align: center;
+}
+.hero-unit form {
+    margin: 1em 0;
+    width: 100%;
+}
+.hero-unit form input {
+    text-align: left;
+}

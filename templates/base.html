@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Search Beer Advocate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar-inner">
+            <a href="/" title="To the front!" class="home pull-left btn btn-medium"><i class="icon-home"></i>Home</a>
+            <form class="form-search pull-left" action="/search" method="get">
+                <input type="search" class="input-xxlarge search-query" name="q" placeholder="enter your search, friend" value="{% block q %}{% endblock %}">
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </nav>
+    </div>
+    <div id="content" class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+</html>
