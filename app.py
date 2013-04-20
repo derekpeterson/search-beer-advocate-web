@@ -21,4 +21,4 @@ def page_not_found(error):
     return render_template('index.html', error=error)
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run()
