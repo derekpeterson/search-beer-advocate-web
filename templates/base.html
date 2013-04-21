@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 <head>
-    <title>Search Beer Advocate</title>
+    <title>{% block title %}{% endblock title %}Search Beer Advocate</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,15 +20,18 @@
         {% block content %}
         {% endblock content %}
     </div>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>-->
     <script type="text/javascript">
-        ;(function($){
-            $('body').on('click', 'a.external', function(e) {
-                window.open(e.target.href);
-                return false;
-            });
-        }(jQuery));
+        ;(function() {
+            var external = document.getElementsByClassName('external');
+            for (var i = 0, len = external.length; i < len; ++i) {
+                external[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.open(e.target.href);
+                }, false);
+            }
+        }());
     </script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}
+{{ query + ' - ' }}
+{% endblock title %}
+
 {% block q %}
 {{ query }}
 {% endblock q %}
