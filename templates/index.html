@@ -1,16 +1,18 @@
 {% extends "base.html" %}
+
 {% block q %}
 {% endblock q %}
+
 {% block content %}
 <div class="hero-unit">
-    <h1>Search Beer Advocate</h1>
+    <h1>Search <a class="external" href="http://beeradvocate.com/" title="BeerAdvocate">BeerAdvocate</a></h1>
     <form class="form-search" action="/search" method="get">
-        <input type="search" class="input-xxlarge search-query" name="q" placeholder="enter your search, friend">
+        <input type="search" class="input-xxlarge search-query" name="q" placeholder="find your beer">
         <button type="submit" class="btn">Search</button>
     </form>
     {% if error %}
     <p class="text-error text-center">Sorry, friend. That page does not exist. This one does, though.</p>
     {% endif %}
-    <p class="text-info">Interested in checking out the code behind this site? Find it on <a href="https://github.com/derekpeterson/search-beer-advocate" title="This site's GitHub repository">GitHub</a>.</p>
+    <p class="text-info">Interested in checking out the code behind this site? Find it on <a class="external" href="https://github.com/derekpeterson/search-beer-advocate" title="This site's GitHub repository">GitHub</a>.</p>
 </div>
 {% endblock content %}

@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css" />
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <nav class="navbar-inner">
             <a href="/" title="To the front!" class="home pull-left btn btn-medium"><i class="icon-home"></i>Home</a>
             <form class="form-search pull-left" action="/search" method="get">
-                <input type="search" class="input-xxlarge search-query" name="q" placeholder="enter your search, friend" value="{% block q %}{% endblock %}">
+                <input type="search" class="input-xxlarge search-query" name="q" placeholder="find your beer" value="{% block q %}{% endblock %}">
                 <button type="submit" class="btn">Search</button>
             </form>
         </nav>
@@ -22,5 +20,15 @@
         {% block content %}
         {% endblock content %}
     </div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        ;(function($){
+            $('body').on('click', 'a.external', function(e) {
+                window.open(e.target.href);
+                return false;
+            });
+        }(jQuery));
+    </script>
 </body>
 </html>
