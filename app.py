@@ -1,4 +1,6 @@
 from flask import Flask, redirect, render_template, request, url_for
+import json
+import re
 import requests
 app = Flask(__name__)
 
@@ -10,12 +12,14 @@ def index():
 @app.route('/search')
 def search():
     query = request.args.get('q', '')
-    results = [{
-        'id': i,
-        'url': url_for('index'),
-        'name': "Beer Ipsum IPA",
-        'summary': "Brew kettle noble hops aerobic, abv bock dry hopping craft beer. squares krug hefe mash mash tun bitter lauter; cask conditioned ale aau barley dry stout. degrees plato hydrometer goblet conditioning tank craft beer biere de garde becher. lauter tun; malt extract ibu berliner weisse degrees plato. bunghole bottom fermenting yeast amber bunghole enzymes lauter; bitter. alpha acid aerobic malt double bock/dopplebock. bottom fermenting yeast attenuation, units of bitterness caramel malt. kolsch squares wort saccharification pint glass, amber biere de garde."
-    } for i in range(20)]
+    r = requests.get('http://ec2-54-245-176-209.us-west-2.compute.amazonaws.com:8080?q=' + query)
+    results = []
+    text = r.text.split('\n////\n')
+    for line in text:
+        if line == '':
+            continue
+        beer = json.loads(re.sub(r"\n+|\||\t+", ' ', line))
+        results.append(beer)
     return render_template('search.html', query=query, results=results)
 
 @app.route('/feedback')
