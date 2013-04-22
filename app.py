@@ -5,6 +5,7 @@ import requests
 app = Flask(__name__)
 
 CLEAN = re.compile(r'<[^<]*?/?>|["\';:]')
+DIGIT = re.compile(r'^\d{3}')
 
 @app.route('/')
 @app.route('/index')
@@ -19,11 +20,11 @@ def search():
     results = []
     text = r.text.split('\n////\n')
     for line in text:
-        if line == '':
+        if line == '' or DIGIT.match(line):
             continue
         beer = json.loads(re.sub(r"\n+|\||\t+", ' ', line))
         results.append(beer)
-    return render_template('search.html', query=query, results=results)
+    return render_template('search.html', query=query, results=results, count=len(results))
 
 @app.route('/feedback')
 def feedback():

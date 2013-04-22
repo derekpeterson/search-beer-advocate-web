@@ -12,9 +12,7 @@
 <a class="pull-right external" href="http://beeradvocate.com/search?qt=beer&q={{ query }}">compare these results to BeerAdvocate's</a>
 <h1>Search Results</h1>
 <ul class="results unstyled">
-    {% if not results %}
-    <li class="text-info">Sorry! We did not find any results for the query "{{ query }}"</li>
-    {% endif %}
+    {% if count %}
     {% for item in results %}
     <li>
         <h2><a class="external" href="{{ item.get('url') }}" title="{{ item.get('name') }}">{{ item.get('name') }}</a></h2>
@@ -23,5 +21,8 @@
         <a href="/feedback?id={{ item.get('id') }}" class="pull-right">more like this</a>
     </li>
     {% endfor %}
+    {% else %}
+    <li class="text-info">Sorry! We did not find any results for the query "{{ query }}"</li>
+    {% endif %}
 </ul>
 {% endblock content %}
