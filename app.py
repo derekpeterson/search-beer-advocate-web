@@ -4,6 +4,8 @@ import re
 import requests
 app = Flask(__name__)
 
+CLEAN = re.compile(r'<[^<]*?/?>|["\';:]')
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -12,6 +14,7 @@ def index():
 @app.route('/search')
 def search():
     query = request.args.get('q', '')
+    query = CLEAN.sub('', query)
     r = requests.get('http://ec2-54-245-176-209.us-west-2.compute.amazonaws.com:8080?q=' + query)
     results = []
     text = r.text.split('\n////\n')
