@@ -18,7 +18,7 @@
         <h2><a class="external" href="{{ item.get('url') }}" title="{{ item.get('name') }}">{{ item.get('name') }}</a></h2>
         <h3>Score: {{ item.get('score') }}</h3>
         <p>{{ item.get('reviews')[:1500] + ' ...' }}</p>
-        <a href="/feedback?id={{ item.get('id') }}" class="pull-right">more like this</a>
+        <!--<a href="/feedback?id={{ item.get('id') }}" class="pull-right">more like this</a>-->
     </li>
     {% endfor %}
     {% else %}
