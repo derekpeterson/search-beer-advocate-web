@@ -4,7 +4,7 @@ import re
 import requests
 app = Flask(__name__)
 
-CLEAN = re.compile(r'<[^<]*?/?>|["\';:]')
+CLEAN = re.compile(r'<[^<]*?/?>|[\';:]')
 DIGIT = re.compile(r'^\d{3}')
 
 @app.route('/')
